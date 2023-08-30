@@ -1,15 +1,15 @@
 package utils;
 
-import constants.CommonCharacterConstant;
+import constants.CharacterConstant;
 
 public class StringFormatUtil {
 
     public static  String replaceWhilesSpaces(String value){
-        return value.replaceAll("\\s+", CommonCharacterConstant.SPACE_STRING);
+        return value.replaceAll("\\s+", CharacterConstant.SPACE_STRING);
     }
 
     public static String[] splitStrings(String value){
-        return replaceWhilesSpaces(value).split(CommonCharacterConstant.SPACE_STRING);
+        return replaceWhilesSpaces(value).split(CharacterConstant.SPACE_STRING);
     }
 
     public static int removeDuplicateNumber(int a[], int n)

@@ -1,6 +1,6 @@
 package utils;
 
-import constants.CommonCharacterConstant;
+import constants.CharacterConstant;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,6 +19,6 @@ public class DateUtil {
     }
 
     public static String convertDateToString(Date value){
-        return Objects.isNull(value) ? CommonCharacterConstant.EMPTY_STRING : simpleDateFormat.format(value);
+        return Objects.isNull(value) ? CharacterConstant.EMPTY_STRING : simpleDateFormat.format(value);
     }
 }

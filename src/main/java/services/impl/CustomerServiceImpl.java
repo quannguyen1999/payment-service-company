@@ -1,6 +1,6 @@
 package services.impl;
 
-import constants.CommonCharacterConstant;
+import constants.CharacterConstant;
 import models.Customer;
 import services.CustomerService;
 
@@ -17,9 +17,9 @@ public class CustomerServiceImpl implements CustomerService {
     public void initListDataCustomer() {
         if(Objects.isNull(customerArrayList)){
             customerArrayList = new ArrayList<>();
-            scanner.useDelimiter(CommonCharacterConstant.COMMA);
+            scanner.useDelimiter(CharacterConstant.COMMA);
             while (scanner.hasNext()) {
-                customerArrayList.add(Customer.builder().parse(scanner.nextLine().split(CommonCharacterConstant.COMMA)).build());
+                customerArrayList.add(Customer.builder().parse(scanner.nextLine().split(CharacterConstant.COMMA)).build());
             }
             scanner.close();
         }

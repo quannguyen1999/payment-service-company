@@ -1,6 +1,6 @@
 package services.impl;
 
-import constants.CommonCharacterConstant;
+import constants.CharacterConstant;
 import models.Customer;
 import models.MessageError;
 import models.enums.QuestionEnum;
@@ -18,32 +18,30 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static models.enums.StepEnum.STEP_FIRST;
-import static models.enums.StepEnum.STEP_PROCESS_LOGIN;
-import static models.enums.StepEnum.STEP_PROCESS_MENU_WHEN_HAD_LOGIN;
+import static models.enums.StepEnum.*;
 import static services.AdapterService.reader;
 
 public class MenuServiceImpl extends MessageValidatorAdapter implements MenuService {
     @Override
     public StringBuilder getListMenu() {
-       StringBuilder stringBuilder = new StringBuilder();
-       stringBuilder.append("<< Welcome ").append(AdapterService.getInstanceCustomerService().getCurrentCustomerLogin().getName()).append(" come back >>").append(CommonCharacterConstant.COMMAND_NEXT_LINE);
-       stringBuilder.append("<< You Current Info Account >>").append(CommonCharacterConstant.COMMAND_NEXT_LINE);
-       stringBuilder.append(AdapterService.getInstanceCustomerService().getCurrentCustomerLogin().toString()).append(CommonCharacterConstant.COMMAND_NEXT_LINE).append(CommonCharacterConstant.COMMAND_NEXT_LINE);
-       stringBuilder.append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_1))
-               .append(CommonCharacterConstant.COMMAND_NEXT_LINE)
-               .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_2))
-               .append(CommonCharacterConstant.COMMAND_NEXT_LINE)
-               .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_3))
-               .append(CommonCharacterConstant.COMMAND_NEXT_LINE)
-               .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_4))
-               .append(CommonCharacterConstant.COMMAND_NEXT_LINE)
-               .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_5))
-               .append(CommonCharacterConstant.COMMAND_NEXT_LINE)
-               .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_6))
-               .append(CommonCharacterConstant.COMMAND_NEXT_LINE)
-               .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_7))
-               .append(CommonCharacterConstant.COMMAND_NEXT_LINE)
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<< Welcome ").append(AdapterService.getInstanceCustomerService().getCurrentCustomerLogin().getName()).append(" come back >>").append(CharacterConstant.COMMAND_NEXT_LINE);
+        stringBuilder.append("<< You Current Info Account >>").append(CharacterConstant.COMMAND_NEXT_LINE);
+        stringBuilder.append(AdapterService.getInstanceCustomerService().getCurrentCustomerLogin().toString()).append(CharacterConstant.COMMAND_NEXT_LINE).append(CharacterConstant.COMMAND_NEXT_LINE);
+        stringBuilder.append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_1))
+                .append(CharacterConstant.COMMAND_NEXT_LINE)
+                .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_2))
+                .append(CharacterConstant.COMMAND_NEXT_LINE)
+                .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_3))
+                .append(CharacterConstant.COMMAND_NEXT_LINE)
+                .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_4))
+                .append(CharacterConstant.COMMAND_NEXT_LINE)
+                .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_5))
+                .append(CharacterConstant.COMMAND_NEXT_LINE)
+                .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_6))
+                .append(CharacterConstant.COMMAND_NEXT_LINE)
+                .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_7))
+                .append(CharacterConstant.COMMAND_NEXT_LINE)
                .append(PropertiesUtil.getProperty(TypeMessageEnum.QUESTION_EXIT));
        return stringBuilder;
     }
@@ -74,11 +72,11 @@ public class MenuServiceImpl extends MessageValidatorAdapter implements MenuServ
 
     @Override
     public void startMenu() throws IOException {
-        String input = CommonCharacterConstant.EMPTY_STRING;
+        String input = CharacterConstant.EMPTY_STRING;
         StepEnum step = STEP_FIRST;
         QuestionEnum questionEnum = null;
         do {
-            print(CommonCharacterConstant.SPACE_MENU);
+            print(CharacterConstant.SPACE_MENU);
             switch (step){
                 case STEP_FIRST:
                     step = processFirstStep();
@@ -88,20 +86,20 @@ public class MenuServiceImpl extends MessageValidatorAdapter implements MenuServ
                     continue;
             }
             if(step == STEP_PROCESS_MENU_WHEN_HAD_LOGIN){
-                print(getListMenu().append(CommonCharacterConstant.COMMAND_NEXT_LINE)
+                print(getListMenu().append(CharacterConstant.COMMAND_NEXT_LINE)
                         .append("Please Choose menu:")
                         .toString());
                 input = reader.readLine().trim();
-                MessageError messageError =  MenuValidator.validateListMenuWhenHadLogin(input);
-                if(messageError.getStatusErrorEnum().equals(StatusErrorEnum.BAD_REQUEST)){
+                MessageError messageError = MenuValidator.validateListMenuWhenHadLogin(input);
+                if (messageError.getStatusErrorEnum().equals(StatusErrorEnum.BAD_REQUEST)) {
                     print(messageError.getMessageError());
                     continue;
                 }
                 questionEnum = getQuestionEnum(input);
                 AdapterService.getInstanceQuestionService().processQuestion(questionEnum);
             }
-        } while (!input.equalsIgnoreCase(CommonCharacterConstant.COMMAND_EXIT.toString()));
-        print(CommonCharacterConstant.SPACE_EXIT);
+        } while (!input.equalsIgnoreCase(CharacterConstant.COMMAND_EXIT.toString()));
+        print(CharacterConstant.SPACE_EXIT);
     }
 
     private StepEnum processFirstStep() throws IOException {

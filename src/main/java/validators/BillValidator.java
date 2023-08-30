@@ -1,6 +1,6 @@
 package validators;
 
-import constants.CommonRegexConstant;
+import constants.RegexConstant;
 import models.Bill;
 import models.MessageError;
 import models.enums.TypeMessageEnum;
@@ -18,7 +18,7 @@ public class BillValidator extends MessageValidatorAdapter {
     public static MessageError validateProcessPay(String[] billNo){
         //check valid number
         for (String billNoId : billNo) {
-            if(Objects.isNull(billNoId) || !billNoId.matches(CommonRegexConstant.REGEX_NUMBER)){
+            if (Objects.isNull(billNoId) || !billNoId.matches(RegexConstant.REGEX_NUMBER)) {
                 return buildMessageError(TypeMessageEnum.ERROR_BILL_INVALID);
             }
             Bill bill = AdapterService.getInstanceBillService().findBillById(Integer.parseInt(billNoId));

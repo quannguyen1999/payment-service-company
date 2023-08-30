@@ -1,6 +1,6 @@
 package constants;
 
-public class CommonCharacterConstant {
+public class CharacterConstant {
 
     public static final String COMMA = ",";
 
