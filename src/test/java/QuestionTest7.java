@@ -1,4 +1,4 @@
-import constants.CommonCharacterConstant;
+import constants.CharacterConstant;
 import models.enums.FilePathDataEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,9 +16,9 @@ public class QuestionTest7 extends CommonTest{
     @Test
     public void testDataOffBill() throws IOException {
         //Get File In CSV to Test
-        scanner.useDelimiter(CommonCharacterConstant.COMMA);
+        scanner.useDelimiter(CharacterConstant.COMMA);
         while (scanner.hasNext()) {
-            String[] result = scanner.nextLine().split(CommonCharacterConstant.COMMA);
+            String[] result = scanner.nextLine().split(CharacterConstant.COMMA);
             String outputResult = result[0];
             String expectedResult = result[1];
 

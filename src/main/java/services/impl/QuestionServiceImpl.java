@@ -1,6 +1,6 @@
 package services.impl;
 
-import constants.CommonCharacterConstant;
+import constants.CharacterConstant;
 import models.Bill;
 import models.Customer;
 import models.MessageError;
@@ -29,7 +29,7 @@ public class QuestionServiceImpl extends MessageValidatorAdapter implements Ques
     @Override
     public QuestionEnum processQuestion1(String input) throws IOException {
         //Get List Menu
-        print(CommonCharacterConstant.SPACE_MENU);
+        print(CharacterConstant.SPACE_MENU);
 
         //Start Process Add Fund To Account
         print("Your Available Balance: " + AdapterService.getInstanceCustomerService().getCurrentCustomerLogin().getFund());
@@ -65,7 +65,7 @@ public class QuestionServiceImpl extends MessageValidatorAdapter implements Ques
 
     @Override
     public QuestionEnum processQuestion3(String input) throws IOException {
-        print(CommonCharacterConstant.SPACE_MENU);
+        print(CharacterConstant.SPACE_MENU);
 
         //Start Process Add Fund To Account
         print(AdapterService.getInstanceCustomerService().getCurrentCustomerLogin().toString());
@@ -109,7 +109,7 @@ public class QuestionServiceImpl extends MessageValidatorAdapter implements Ques
 
     @Override
     public QuestionEnum processQuestion5(String input) throws IOException {
-        print(CommonCharacterConstant.SPACE_MENU);
+        print(CharacterConstant.SPACE_MENU);
 
         print("Please Enter Schedule:");
         if(Objects.isNull(input)){
@@ -145,7 +145,7 @@ public class QuestionServiceImpl extends MessageValidatorAdapter implements Ques
 
     @Override
     public QuestionEnum processQuestion7(String input) throws IOException {
-        print(CommonCharacterConstant.SPACE_MENU);
+        print(CharacterConstant.SPACE_MENU);
 
         //Start Process Add Fund To Account
         print(AdapterService.getInstanceCustomerService().getCurrentCustomerLogin().toString());

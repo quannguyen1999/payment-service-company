@@ -1,6 +1,6 @@
 package validators;
 
-import constants.CommonRegexConstant;
+import constants.RegexConstant;
 import models.Customer;
 import models.MessageError;
 import models.enums.TypeMessageEnum;
@@ -15,7 +15,7 @@ public class CustomerValidator extends MessageValidatorAdapter {
 
 
     public static MessageError validateFund(String fund){
-        if(!fund.matches(CommonRegexConstant.REGEX_NUMBER) || Double.parseDouble(fund) < 0){
+        if (!fund.matches(RegexConstant.REGEX_NUMBER) || Double.parseDouble(fund) < 0) {
             return buildMessageError(TypeMessageEnum.ERROR_FUND_INVALID);
         }
         return buildMessageSuccess();

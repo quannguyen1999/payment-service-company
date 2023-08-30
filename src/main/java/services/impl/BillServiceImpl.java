@@ -1,6 +1,6 @@
 package services.impl;
 
-import constants.CommonCharacterConstant;
+import constants.CharacterConstant;
 import models.Bill;
 import services.BillService;
 
@@ -42,9 +42,9 @@ public class BillServiceImpl implements BillService {
     public void initListDataBill() {
         if(Objects.isNull(billArrayList)){
             billArrayList = new ArrayList<>();
-            scanner.useDelimiter(CommonCharacterConstant.COMMA);
+            scanner.useDelimiter(CharacterConstant.COMMA);
             while (scanner.hasNext()) {
-                billArrayList.add(Bill.builder().parse(scanner.nextLine().split(CommonCharacterConstant.COMMA)).build());
+                billArrayList.add(Bill.builder().parse(scanner.nextLine().split(CharacterConstant.COMMA)).build());
             }
             scanner.close();
         }
